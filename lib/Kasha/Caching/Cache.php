@@ -43,6 +43,11 @@ class Cache
 		}
 	}
 
+	public function getRootFolder()
+	{
+		return $this->filePath;
+	}
+
 	/**
 	 * Gets value from the cache by id
 	 *

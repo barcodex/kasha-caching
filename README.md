@@ -37,6 +37,7 @@ To retrieve the instance, use *getInstance* method.
 
 Cache is filesystem based, so it should know the folder where it is initialized into.
 Use *setRootFolder* when you have got the instance of the object for the first time.
+At any later point, running *getRootFolder* on the instance variable would return the path.
 
 API does not care about the hierarchy of the keys you want to have, but the Cache class is ready for that.
 Whenever you specify the key as a string containing slashes, Cache will automatically create the folder structure.

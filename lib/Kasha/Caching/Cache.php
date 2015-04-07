@@ -8,10 +8,26 @@ class Cache
 	private static $instance;
 
 	/** @var string */
-	public $filePath = '';
+	private $filePath = '';
 
 	/** @var bool */
 	private $isValid = false;
+
+	/**
+	 * Cache class is a singleton - reuse the same instance of an object
+	 *
+	 * @return Cache|null
+	 * @throws \Exception
+	 */
+	public static function getInstance()
+	{
+		if (is_null(self::$instance)) {
+			$className = get_called_class(); // allow subclasses to instantiate themselves
+			self::$instance = new $className();
+		}
+
+		return self::$instance;
+	}
 
 	/**
 	 * @param $rootFolderPath - should end with slash!
@@ -25,21 +41,6 @@ class Cache
 			$this->filePath = $rootFolderPath;
 			$this->isValid = true;
 		}
-	}
-
-	/**
-	 * Cache class is a singleton - reuse the same instance of an object
-	 *
-	 * @return Cache|null
-	 * @throws \Exception
-	 */
-	public static function getInstance()
-	{
-		if (is_null(self::$instance)) {
-			self::$instance = new Cache();
-		}
-
-		return self::$instance;
 	}
 
 	/**

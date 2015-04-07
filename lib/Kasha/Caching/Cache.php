@@ -5,7 +5,7 @@ namespace Kasha\Caching;
 class Cache
 {
 	/** @var Cache */
-	private static $instance;
+	protected static $instance;
 
 	/** @var string */
 	private $filePath = '';
@@ -34,10 +34,10 @@ class Cache
 	 */
 	public function setRootFolder($rootFolderPath)
 	{
-		if (!file_exists($this->filePath)) {
-			@mkdir($this->filePath, 0777);
+		if (!file_exists($rootFolderPath)) {
+			@mkdir($rootFolderPath, 0777);
 		}
-		if (file_exists($this->filePath)) {
+		if (file_exists($rootFolderPath)) {
 			$this->filePath = $rootFolderPath;
 			$this->isValid = true;
 		}

@@ -31,6 +31,7 @@ class Cache
 
 	/**
 	 * @param $rootFolderPath - should end with slash!
+	 * @return \Kasha\Caching\Cache
 	 */
 	public function setRootFolder($rootFolderPath)
 	{
@@ -41,6 +42,8 @@ class Cache
 			$this->filePath = $rootFolderPath;
 			$this->isValid = true;
 		}
+
+		return $this;
 	}
 
 	public function getRootFolder()
